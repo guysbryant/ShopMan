@@ -1,0 +1,40 @@
+* Project Notes
+** TODO Requirements [/]
+   - [ ] 
+** What is this?
+   ShopMan is a tool to manager customers and production flow for a machine shop
+** What do I need?
+*** Users
+**** Roles - sales, purchasing, admin, etc
+**** username
+**** contact information
+**** pay rate
+*** Customers
+**** has_many purchase orders
+**** has_many products through: :purchase orders
+**** name, address, contact person/information
+*** Products
+**** belongs_to purchase_order
+**** has_one bill of material
+**** price (some multiplier on cost of the bill of material)
+*** Inventory
+**** has_many bill of material
+**** has_many products through: :bill of material
+**** type
+**** name
+**** description
+**** cost
+**** unit of measure (in, mm, each, box of qty, lbs)
+**** qty in stock
+*** Bill of material
+**** qty of material needed
+**** belong_to inventory
+**** has_one product
+**** production time? (how many hours to make?)
+*** Purchase Order
+**** what they want (product)
+**** qty
+**** price
+**** customer information
+**** has_many purchase orders
+**** belong_to customer
