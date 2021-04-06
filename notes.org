@@ -1,6 +1,4 @@
 * Project Notes
-** TODO Requirements [/]
-   - [ ] 
 ** What is this?
    ShopMan is a tool to manager customers and production flow for a machine shop
 ** What do I need?
@@ -14,9 +12,10 @@
 **** has_many products through: :purchase orders
 **** name, address, contact person/information
 *** Products
-**** belongs_to purchase_order
 **** has_one bill of material
-**** price (some multiplier on cost of the bill of material)
+**** name
+**** description
+**** par_number
 *** Inventory
 **** has_many bill of material
 **** has_many products through: :bill of material
@@ -31,6 +30,10 @@
 **** belong_to inventory
 **** has_one product
 **** production time? (how many hours to make?)
+*** Bill of material line
+**** belongs_to inventory
+**** belongs_to bill of material
+**** inventory_qty (uses inventory.um)
 *** Purchase Order
 **** what they want (product)
 **** qty
@@ -38,3 +41,38 @@
 **** customer information
 **** has_many purchase orders
 **** belong_to customer
+**** po #
+*** Purchase Order Lines
+**** belongs_to product
+**** belongs_to purchase_order
+**** price
+**** product_qty
+**** line number
+** Research
+*** has_one
+** Specifications for the Rails Assessment
+*** TODO Specs:[6/15]
+  - [X] Using Ruby on Rails for the project
+  - [X] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
+  - [X] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+  - [X] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
+  - [X] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
+  - [X] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
+  - [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+  - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+  - [ ] Include signup
+  - [ ] Include login
+  - [ ] Include logout
+  - [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+  - [ ] Include nested resource show or index (URL e.g. users/2/recipes) (customers/2/products)
+  - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) (products/1/bomline/new)
+  - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+*** TODO Confirm: [0/4]
+ - [ ] The application is pretty DRY
+ - [ ] Limited logic in controllers
+ - [ ] Views use helper methods if appropriate
+ - [ ] Views use partials if appropriate
+** Scope Method Ideas
+*** Customer products over some price point
+*** Customer products containing inventory of specific material type
+*** Products on specific PurchaseOrder
