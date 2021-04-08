@@ -76,10 +76,10 @@
 *** Customer products over some price point
 *** Customer products containing inventory of specific material type
 *** Products on specific PurchaseOrder
-** TODO Development Plan [2/11]
+** TODO Development Plan [3/11]
    - [X] relationships
    - [X] migrations
-   - [ ] crud users
+   - [X] crud users
    - [ ] login system
    - [ ] crud actions for
      - [ ] products
