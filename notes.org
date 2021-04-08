@@ -76,3 +76,19 @@
 *** Customer products over some price point
 *** Customer products containing inventory of specific material type
 *** Products on specific PurchaseOrder
+** TODO Development Plan [2/11]
+   - [X] relationships
+   - [X] migrations
+   - [ ] crud users
+   - [ ] login system
+   - [ ] crud actions for
+     - [ ] products
+     - [ ] customers
+     - [ ] purchase orders
+     - [ ] purchase order lines
+   - [ ] nested routes (require accepts attributes for method)
+   - [ ] error messages div
+   - [ ] validations
+   - [ ] omniauth
+   - [ ] scope method(s)
+   - [ ] partials / helpers
