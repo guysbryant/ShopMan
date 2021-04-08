@@ -2,14 +2,14 @@
 
 one:
   product: one
-  qty: 
-  price: 
-  purchase_order: one
-  line_number: 
+  sales_order: one
+  qty: 1
+  price: 1
+  line_number: 1
 
 two:
   product: two
-  qty: 
-  price: 
-  purchase_order: two
-  line_number: 
+  sales_order: two
+  qty: 1
+  price: 1
+  line_number: 1
