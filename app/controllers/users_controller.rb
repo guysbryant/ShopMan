@@ -34,8 +34,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find_by(id: params[:id])
-    @user.destroy
-    redirect_to users_path
+    reset_session if @user.id == current_user
+      @user.destroy
+      redirect_to users_path
   end
 
   def show
