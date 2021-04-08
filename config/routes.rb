@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # resources :sessions
+  root to: "sessions#homepage"
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
   resources :products
   resources :purchase_order_lines
   resources :purchase_orders
