@@ -1,0 +1,11 @@
+<h1>All Users</h1>
+
+<ul>
+    <% @users.each do |f| %>
+        <li><%= f.name %></li>
+        <li><%= f.username %></li>
+        <li><%= f.address %></li>
+        <li><%= f.phone_number %></li>
+        <li><%= f.pay_rate %></li>
+    <% end %>
+</ul>
