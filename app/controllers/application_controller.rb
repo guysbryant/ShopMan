@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @user ||= session[:user_id]
+    @user_id ||= session[:user_id]
   end
 
   def logged_in?
-    current_user
+    !!current_user
   end
 end
