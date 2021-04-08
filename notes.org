@@ -83,7 +83,7 @@
    - [X] login system
    - [-] crud actions for
      - [X] products
-     - [ ] customers
+     - [X] customers
      - [ ] purchase orders
      - [ ] purchase order lines
    - [ ] nested routes (require accepts attributes for method)
