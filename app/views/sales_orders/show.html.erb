@@ -1,0 +1,8 @@
+<h1>Sales Order Number: <%= @sales_order.sales_order_number %></h1>
+
+Customer: <%= @sales_order.customer.name %>
+
+<p>
+<%= link_to "Edit Sales Order", edit_sales_order_path %>
+<p>
+<%= link_to "Delete Sales Order", sales_order_path, method: :delete, data: { confirm: "Are you sure?"} %>

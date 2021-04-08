@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def homepage
   end
-  
+
   def new
   end
 

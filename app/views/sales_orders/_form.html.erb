@@ -1,0 +1,11 @@
+<%= form_for @sales_order do |f| %>
+    <%= f.label :sales_order_number %>
+    <%= f.text_field :sales_order_number %>
+    <p>
+
+        <!-- need to add collection select for customers here and accepts attributes for to sales order model -->
+    <%= f.label :sales_order_number %>
+    <%= f.collection_select Customer.rb, :id, :name %>
+    <p>
+
+<% end %>

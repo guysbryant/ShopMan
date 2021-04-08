@@ -84,8 +84,8 @@
    - [-] crud actions for
      - [X] products
      - [X] customers
-     - [ ] purchase orders
-     - [ ] purchase order lines
+     - [ ] sales orders
+     - [ ] sales order lines
    - [ ] nested routes (require accepts attributes for method)
    - [ ] error messages div
    - [ ] validations
