@@ -81,8 +81,8 @@
    - [X] migrations
    - [X] crud users
    - [X] login system
-   - [ ] crud actions for
-     - [ ] products
+   - [-] crud actions for
+     - [X] products
      - [ ] customers
      - [ ] purchase orders
      - [ ] purchase order lines

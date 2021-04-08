@@ -1,0 +1,10 @@
+<h1><%= @product.name %></h1>
+Product Description:
+<p><%= @product.description %>
+Part Number:
+<p><%= @product.part_number %>
+
+<p>
+<%= link_to "Edit Product", edit_product_path %>
+<p>
+<%= link_to "Delete Product", product_path(@product), method: :delete, data: {confirm: "Are you sure?"} %>
