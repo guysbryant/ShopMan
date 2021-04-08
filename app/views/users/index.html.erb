@@ -1,11 +1,11 @@
 <h1>All Users</h1>
 
 <ul>
-    <% @users.each do |f| %>
-        <li><%= f.name %></li>
-        <li><%= f.username %></li>
-        <li><%= f.address %></li>
-        <li><%= f.phone_number %></li>
-        <li><%= f.pay_rate %></li>
+    <% @users.each do |u| %>
+        <h2><%= link_to u.name, user_path(u) %></h2>
+        <li><%= u.username %></li>
+        <li><%= u.address %></li>
+        <li><%= u.phone_number %></li>
+        <li><%= u.pay_rate %></li>
     <% end %>
 </ul>

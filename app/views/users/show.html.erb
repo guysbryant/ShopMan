@@ -7,3 +7,6 @@ Phone Number: <%= @user.phone_number %>
 <p>
 Pay Rate: <%= @user.pay_rate %>
 <p>
+
+<%= link_to "Edit Profile", edit_user_path %>
+<%= link_to "Delete Profile", user_path(@user), method: :delete, data: {confirm: "Are you sure?"} %>
