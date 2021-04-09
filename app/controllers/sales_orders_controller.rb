@@ -43,6 +43,6 @@ class SalesOrdersController < ApplicationController
 
   private
   def sales_order_params
-    params.require(:sales_order).permit(:sales_order_number, :customer_id)
+    params.require(:sales_order).permit(:customer_id)
   end
 end

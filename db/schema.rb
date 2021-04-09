@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_014805) do
+ActiveRecord::Schema.define(version: 2021_04_09_214137) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 2021_04_09_014805) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sales_number_trackers", force: :cascade do |t|
+    t.integer "sales_number", default: 1000
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sales_order_lines", force: :cascade do |t|
     t.integer "product_id"
     t.integer "sales_order_id"
@@ -54,7 +60,9 @@ ActiveRecord::Schema.define(version: 2021_04_09_014805) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number_of_lines", default: 0
+    t.integer "sales_number_tracker_id"
     t.index ["customer_id"], name: "index_sales_orders_on_customer_id"
+    t.index ["sales_number_tracker_id"], name: "index_sales_orders_on_sales_number_tracker_id"
   end
 
   create_table "user_roles", force: :cascade do |t|

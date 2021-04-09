@@ -1,8 +1,4 @@
 <%= form_for @sales_order do |f| %>
-    <%= f.label :sales_order_number %>
-    <%= f.text_field :sales_order_number %>
-    <p>
-
     <%= f.label :sales_order_customer %>
     <%= f.collection_select :customer_id, Customer.all, :id, :name, prompt: true %>
     <p>
