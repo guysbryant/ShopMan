@@ -8,7 +8,9 @@ class SalesOrderLinesController < ApplicationController
 
   def create
     @sales_order_line = @sales_order.sales_order_lines.build(sales_order_line_params)
+    @sales_order_line.line_number = @sales_order.next_line_number
     if @sales_order_line.save
+      @sales_order.save
       redirect_to @sales_order
     else
       render :new
@@ -35,7 +37,7 @@ class SalesOrderLinesController < ApplicationController
 
   private
   def sales_order_line_params
-    params.require(:sales_order_line).permit(:product_id, :sales_order_id, :qty, :price, :line_number)
+    params.require(:sales_order_line).permit(:product_id, :sales_order_id, :qty, :price)
   end
 
   def set_sales_order
