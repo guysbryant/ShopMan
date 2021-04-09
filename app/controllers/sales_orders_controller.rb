@@ -40,4 +40,9 @@ class SalesOrdersController < ApplicationController
     @sales_order.destroy
     redirect_to sales_orders_path
   end
+
+  private
+  def sales_order_params
+    params.require(:sales_order).permit(:sales_order_number, :customer_id)
+  end
 end

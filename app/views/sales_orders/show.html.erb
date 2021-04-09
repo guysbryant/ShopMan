@@ -6,3 +6,31 @@ Customer: <%= @sales_order.customer.name %>
 <%= link_to "Edit Sales Order", edit_sales_order_path %>
 <p>
 <%= link_to "Delete Sales Order", sales_order_path, method: :delete, data: { confirm: "Are you sure?"} %>
+<p>
+<%= link_to "Add New Line", new_sales_order_sales_order_line_path(@sales_order.id) %>
+
+<p>All Lines on Sales Order
+
+<table>
+    <thead>
+        <tr>
+            <th>Line Number | </th>
+            <th>Product | </th>
+            <th>Qty | </th>
+            <th>Price | </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @sales_order.sales_order_lines.each do |l| %> 
+            <tr>
+                <td><%= l.line_number %> </td>
+                <td><%= link_to l.product.name, product_path(l.product.id) %> </td>
+                <td><%= l.qty %> </td>
+                <td><%= l.price %> </td>
+
+                <td><%= link_to "Edit Line", edit_sales_order_line_path(l) %> </td>
+                <td><%= link_to "Delete Line", sales_order_line_path(l), method: :delete, data: {confirm: "Are you sure?"} %> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

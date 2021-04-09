@@ -2,8 +2,9 @@
 <%= link_to "Create New Sales Order", new_sales_order_path  %>
 <ul>
     <% @sales_orders.each do |s| %>
-        <li><%= link_to s.sales_order_number, sales_order_path(s) %></li>
-        <li><%= link_to s.customer.name, customer_path(s.customer) %></li>
+        <li>Sales Order Number: <%= link_to s.sales_order_number, sales_order_path(s) %></li>
+        <li>Customer: <%= link_to s.customer.name, customer_path(s.customer) %></li>
+        <hr>
     <% end %>
 </ul>
 
