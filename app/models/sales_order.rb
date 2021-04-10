@@ -4,8 +4,14 @@ class SalesOrder < ApplicationRecord
   has_many :sales_order_lines, dependent: :destroy
 
   before_validation :set_sales_order_number, on: :create
+  after_save :save_sales_tracker
 
   SALES_TRACKER ||= SalesNumberTracker.find_or_create_by(id: 1)
+
+
+  def save_sales_tracker
+    SALES_TRACKER.save
+  end
 
   def set_sales_order_number
     set_sales_tracker unless self.sales_number_tracker
