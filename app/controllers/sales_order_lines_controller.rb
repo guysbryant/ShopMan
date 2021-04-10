@@ -1,9 +1,10 @@
 class SalesOrderLinesController < ApplicationController
   before_action :require_logged_in
-  before_action :set_sales_order
+  before_action :set_sales_order_if_nested, only: %i(new edit create)
+  before_action :set_sales_order_line, only: %i(edit update destroy)
 
   def new
-    @sales_order_line = @sales_order.sales_order_lines.build()
+    @sales_order_line = @sales_order.sales_order_lines.new
   end
 
   def create
@@ -18,21 +19,20 @@ class SalesOrderLinesController < ApplicationController
   end
 
   def edit
+    @sales_order = @sales_order_line.sales_order
   end
 
   def update
-    # @sales_order_line = SalesOrderLine.find_by(id: params[:id])
     if @sales_order_line.update(sales_order_line_params)
-      redirect_to @sales_order
+      redirect_to sales_order_path(@sales_order_line.sales_order)
     else
       render :edit
     end
   end
 
   def destroy
-    # @sales_order_line = SalesOrderLine.find_by(id: params[:id])
     @sales_order_line.destroy
-    redirect_to sales_order_path(@sales_order)
+    redirect_to sales_order_path(@sales_order_line.sales_order)
   end
 
   private
@@ -41,7 +41,15 @@ class SalesOrderLinesController < ApplicationController
   end
 
   def set_sales_order
-    @sales_order_line ||= SalesOrderLine.find_by(id: params[:id])
+    # @sales_order_line ||= SalesOrderLine.find_by(id: params[:id])
     @sales_order = SalesOrder.find_by(id: params[:sales_order_id]) || SalesOrder.find_by(id: @sales_order_line.sales_order.id )
+  end
+
+  def set_sales_order_if_nested
+    @sales_order = SalesOrder.find_by(id: params[:sales_order_id]) if params[:sales_order_id]
+  end
+
+  def set_sales_order_line
+    @sales_order_line = SalesOrderLine.find_by(id: params[:id])
   end
 end

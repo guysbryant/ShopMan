@@ -7,3 +7,5 @@ Email <%= @customer.email %><p>
 <%= link_to "Edit Customer", edit_customer_path %>
 <p>
 <%= link_to "Delete Customer", customer_path, method: :delete, data: {confirm: "Are you sure?"} %>
+<p>
+<%= link_to "#{@customer.name} Sales Orders", customer_sales_orders_path(@customer) %>

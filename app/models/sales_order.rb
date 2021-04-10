@@ -2,6 +2,7 @@ class SalesOrder < ApplicationRecord
   belongs_to :customer
   belongs_to :sales_number_tracker
   has_many :sales_order_lines, dependent: :destroy
+  has_many :products, through: :sales_order_lines
 
   before_validation :set_sales_order_number, on: :create
   after_save :save_sales_tracker

@@ -1,16 +1,2 @@
-<h1>Edit Sales Order Line on Sales Order: <%= @sales_order_line.sales_order.sales_order_number %></h1>
-<%= form_for @sales_order_line do |f| %>
-    <%= f.label :product %>
-    <%= f.collection_select :product_id, Product.all, :id, :name, prompt: true %>
-    <p>
-
-    <%= f.label :qty %>
-    <%= f.text_field :qty %>
-    <p>
-
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-    <p>
-
-    <%= f.submit %>
-<% end %>
+<h1>Edit Line</h1>
+<%= render "form" %>

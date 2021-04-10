@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # resources :sales_order_lines
+  resources :sales_order_lines
   # resources :sessions
   root to: "sessions#homepage"
   get "/login", to: "sessions#new"
@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :sales_orders do
     resources :sales_order_lines, shallow: true
   end
-  resources :customers
+  resources :customers do
+    resources :sales_orders, shallow: true
+  end
   resources :products
   resources :roles
   resources :user_roles

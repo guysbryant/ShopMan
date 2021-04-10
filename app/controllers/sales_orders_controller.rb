@@ -1,8 +1,13 @@
 class SalesOrdersController < ApplicationController
   before_action :require_logged_in
+  before_action :set_customer_if_nested, only: %i(index new edit)
 
   def index
-    @sales_orders = SalesOrder.all
+    if @customer
+      @sales_orders = @customer.sales_orders
+    else
+      @sales_orders = SalesOrder.all
+    end
   end
 
   def new
@@ -44,5 +49,11 @@ class SalesOrdersController < ApplicationController
   private
   def sales_order_params
     params.require(:sales_order).permit(:customer_id)
+  end
+
+  def set_customer_if_nested
+    if params.include?(:customer_id)
+      @customer = Customer.find_by(id: params[:customer_id])
+    end
   end
 end

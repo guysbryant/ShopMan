@@ -1,6 +1,5 @@
-<h1>Sales Order Number: <%= @sales_order.sales_order_number %></h1>
-
-Customer: <%= @sales_order.customer.name %>
+<h1><%= link_to @sales_order.customer.name, customer_path(@sales_order.customer) %> Sales Order# <%= @sales_order.sales_order_number %></h1>
+<%= link_to "View All #{@sales_order.customer.name} Sales Orders", customer_sales_orders_path(@sales_order.customer) %>
 
 <p>
 <%= link_to "Edit Sales Order", edit_sales_order_path %>

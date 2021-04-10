@@ -1,17 +1,25 @@
-<h1>Sales Orders</h1>
-<%= link_to "Create New Sales Order", new_sales_order_path  %>
+<h1><%= link_to @customer.name, customer_path(@customer) if @customer %> Sales Orders</h1>
+<% if @customer %>
+    <%= link_to "Create New Sales Order", new_customer_sales_order_path(@customer)  %>
+<% else %>
+    <%= link_to "Create New Sales Order", new_sales_order_path  %>
+<% end %>
 <table>
     <thead>
         <tr>
             <th>Sales Order#</th>
-            <th>Customer</th>
+            <% unless @customer %>
+                <th>Customer</th>
+            <% end %>
         </tr>
     </thead>
     <tbody>
     <% @sales_orders.each do |s| %>
         <tr>
             <td><%= link_to s.sales_order_number, sales_order_path(s) %></td>
-            <td> <%= link_to s.customer.name, customer_path(s.customer) %> </td>
+            <% unless @customer %>
+                <td> <%= link_to s.customer.name, customer_path(s.customer) %> </td>
+            <% end %>
             <td> <%= link_to "Delete Sales Order", sales_order_path(s), method: :delete, data: {confirm: "Are you sure?"} %></td>
         </tr>
     <% end %>

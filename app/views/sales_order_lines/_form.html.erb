@@ -1,4 +1,4 @@
-<%= form_for [@sales_order, @sales_order_line] do |f| %>
+<%= form_for @sales_order_line do |f| %>
     <%= f.label :product %>
     <%= f.collection_select :product_id, Product.all, :id, :name, prompt: true %>
     <p>
@@ -11,5 +11,6 @@
     <%= f.text_field :price %>
     <p>
 
+    <%= hidden_field_tag :sales_order_id, @sales_order.id %>
     <%= f.submit %>
 <% end %>

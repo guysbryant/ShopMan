@@ -1,6 +1,10 @@
 <%= form_for @sales_order do |f| %>
     <%= f.label :sales_order_customer %>
-    <%= f.collection_select :customer_id, Customer.all, :id, :name, prompt: true %>
+    <% if @customer %>
+        <%= f.collection_select :customer_id, Customer.all, :id, :name, {selected: @customer.id} %>
+    <% else %>
+        <%= f.collection_select :customer_id, Customer.all, :id, :name %>
+    <% end %>
     <p>
 
     <%= f.submit %>
