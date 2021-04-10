@@ -1,10 +1,19 @@
 <h1>Sales Orders</h1>
 <%= link_to "Create New Sales Order", new_sales_order_path  %>
-<ul>
+<table>
+    <thead>
+        <tr>
+            <th>Sales Order#</th>
+            <th>Customer</th>
+        </tr>
+    </thead>
+    <tbody>
     <% @sales_orders.each do |s| %>
-        <li>Sales Order Number: <%= link_to s.sales_order_number, sales_order_path(s) %></li>
-        <li>Customer: <%= link_to s.customer.name, customer_path(s.customer) %></li>
-        <hr>
+        <tr>
+            <td><%= link_to s.sales_order_number, sales_order_path(s) %></td>
+            <td> <%= link_to s.customer.name, customer_path(s.customer) %> </td>
+            <td> <%= link_to "Delete Sales Order", sales_order_path(s), method: :delete, data: {confirm: "Are you sure?"} %></td>
+        </tr>
     <% end %>
-</ul>
-
+    </tbody>
+</table>
