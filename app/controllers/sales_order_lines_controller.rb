@@ -41,7 +41,6 @@ class SalesOrderLinesController < ApplicationController
   end
 
   def set_sales_order
-    # @sales_order_line ||= SalesOrderLine.find_by(id: params[:id])
     @sales_order = SalesOrder.find_by(id: params[:sales_order_id]) || SalesOrder.find_by(id: @sales_order_line.sales_order.id )
   end
 
