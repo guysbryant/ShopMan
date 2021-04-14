@@ -7,34 +7,35 @@
     <% end %>
     <p>
 
-        <%= f.fields_for :sales_order_lines do |sol| %>
-            Select An Existing Product<p>
-            <%= sol.label :product %>
-            <%= sol.collection_select :product_id, Product.all, :id, :name %>
-
-            <%= sol.fields_for :product do |p| %>
-                <p>Or Create A New Product</p>
-                <%= p.label :name %>
-                <%= p.text_field :name %>
-                <p>
-
-                <%= p.label :description %>
-                <%= p.text_field :description %>
-                <p>
-                <%= p.label :part_number %>
-                <%= p.text_field :part_number %>
-                <p>
-            <% end %>
+    <%= f.fields_for :sales_order_lines do |sol| %>
+        <hr>
+        Select An Existing Product<p>
+        <%= sol.label :product_id %>
+        <%= sol.collection_select :product_id, Product.all, :id, :name, include_blank: true %>
+        <p>
+        <%= sol.fields_for :product do |p| %>
+            <hr>
+            <p>Or Create A New Product</p>
+            <%= p.label :name %>
+            <%= p.text_field :name %>
             <p>
-            <%= sol.label :qty %>
-            <%= sol.text_field :qty %>
+            <%= p.label :description %>
+            <%= p.text_field :description %>
             <p>
-
-            <%= sol.label :price %>
-            <%= sol.text_field :price %>
+            <%= p.label :part_number %>
+            <%= p.text_field :part_number %>
             <p>
-
-
+            <hr>
         <% end %>
+        Enter Quantity And Sales Price For This Order
+        <p>
+        <%= sol.label :qty %>
+        <%= sol.text_field :qty %>
+        <p>
+
+        <%= sol.label :price %>
+        <%= sol.text_field :price %>
+        <p>
+    <% end %>
     <p><%= f.submit %>
 <% end %>

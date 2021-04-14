@@ -10,12 +10,9 @@ class SalesOrder < ApplicationRecord
   SALES_TRACKER ||= SalesNumberTracker.find_or_create_by(id: 1)
 
   def sales_order_lines_attributes=(attributes)
-    attributes.each{|i,a|
-      self.sales_order_lines << SalesOrderLine.new(
-        #this is only checking if all the fields are empty, it does not handle the case where some are empty, I think validations will handle that for me...or cause more problems
-        product: a[:product_attributes].values.all?(&:empty?) ? Product.find_by(id: a[:product_id]) : Product.create(a[:product_attributes]),
-            qty: a[:qty],
-          price: a[:price])}
+    attributes.values.each do |sol_params|
+        self.sales_order_lines << SalesOrderLine.create(sol_params)
+    end
   end
 
   def save_sales_tracker

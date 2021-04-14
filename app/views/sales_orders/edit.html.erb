@@ -1,2 +1,6 @@
-<h1>Edit <%= @sales_order.sales_order_number %></h1>
-<%= render "form" %>
+<h1>Edit <%=@sales_order.customer.name %> Sales Order# <%= @sales_order.sales_order_number %> Information</h1>
+<%= form_for @sales_order do |f| %>
+    <%= f.label :sales_order_customer %>
+    <%= f.collection_select :customer_id, Customer.all, :id, :name, {selected: @sales_order.customer.id} %>
+    <%= f.submit %>
+<% end %>
