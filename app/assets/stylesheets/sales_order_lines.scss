@@ -1,3 +1,41 @@
 // Place all the styles related to the sales_order_lines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container{
+    border: 2px solid black;
+    padding: 20px;
+}
+.line_number{
+    font-size: 1.5em;
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+.product_create{
+    border-right: 2px solid black;
+    display: inline-block;
+    float: left;
+    padding: 20px 20px 0px 20px;
+}
+
+.product_select{
+    display: inline-block;
+    padding: 20px 20px 0px 20px;
+}
+
+.clear_fix{
+    clear: both;
+    padding: 0px 20px;
+}
+
+@media (max-width: 850px){
+    .product_create{
+        display: block;
+        clear: both;
+        border: none;
+    }
+    .product_select{
+        display: block;
+        clear: both;
+    }
+}

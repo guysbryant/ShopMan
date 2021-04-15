@@ -5,51 +5,66 @@
     <% else %>
         <%= f.collection_select :customer_id, Customer.all, :id, :name %>
     <% end %>
-    <p>
 
     <%= f.fields_for :sales_order_lines do |sol| %>
-        <hr>
-        <%= hidden_field_tag :sales_order_line_id, sol.object.id %>
-        Select An Existing Product<p>
-        <%= sol.label :product_id %>
-        <%= sol.collection_select :product_id, Product.all, :id, :name, include_blank: true %>
-        <p>
-        <%= sol.fields_for :product do |p| %>
-            <hr>
-            <p>Or Create A New Product</p>
-
-            <%= p.label :name %>
-            <% if !!p.object.name %>
-                <%= p.text_field :name, value: "" %>
-            <% else %>
-                <%= p.text_field :name %>
+        <div class="container">
+            <%= hidden_field_tag :sales_order_line_id, sol.object.id %>
+            <div class="line_number" >Line # <%= sol.object.line_number if sol.object.line_number %></div>
+            <div class="product_create" >
+                <%= sol.fields_for :product do |p| %>
+                    <p>
+                        Create A New Product
+                    </p>
+                    <p>
+                        <%= p.label :name %>
+                        <% if !!p.object.name %>
+                            <%= p.text_field :name, value: "" %>
+                        <% else %>
+                            <%= p.text_field :name %>
+                        <% end %>
+                    </p>
+                    <p>
+                        <%= p.label :description %>
+                        <% if !!p.object.name %>
+                            <%= p.text_field :description, value: "" %>
+                        <% else %>
+                            <%= p.text_field :description %>
+                        <% end %>
+                    </p>
+                    <p>
+                        <%= p.label :part_number %>
+                        <% if !!p.object.name %>
+                            <%= p.text_field :part_number, value: "" %>
+                        <% else %>
+                        <%= p.text_field :part_number %>
+                    </p>
+                <% end %>
+            </div>
+            <div class="product_select" >
+                <p>
+                    Or Select An Existing Product (Leave Blank To Create A New Product)
+                </p>
+                <p>
+                    <%= sol.label :product_id %>
+                    <%= sol.collection_select :product_id, Product.all, :id, :name, include_blank: true %>
+                </p>
+            </div>
             <% end %>
-            <p>
-            <%= p.label :description %>
-            <% if !!p.object.name %>
-                <%= p.text_field :description, value: "" %>
-            <% else %>
-                <%= p.text_field :description %>
-            <% end %>
-            <p>
-            <%= p.label :part_number %>
-            <% if !!p.object.name %>
-                <%= p.text_field :part_number, value: "" %>
-            <% else %>
-                <%= p.text_field :part_number %>
-            <% end %>
-            <p>
-            <hr>
-        <% end %>
-        Enter Quantity And Sales Price For This Order
-        <p>
-        <%= sol.label :qty %>
-        <%= sol.text_field :qty %>
-        <p>
-
-        <%= sol.label :price %>
-        <%= sol.text_field :price %>
-        <p>
+            <div class="clear_fix">
+                <hr>
+                <p>
+                    Enter Quantity And Sales Price For This Order
+                </p>
+                <p>
+                <%= sol.label :qty %>
+                <%= sol.text_field :qty %>
+                </p>
+                <p>
+                    <%= sol.label :price %>
+                    <%= sol.text_field :price %>
+                </p>
+            </div>
+        </div>
     <% end %>
-    <p><%= f.submit %>
+    <%= f.submit %>
 <% end %>

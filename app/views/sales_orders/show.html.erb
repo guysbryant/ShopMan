@@ -20,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-        <% @sales_order.sales_order_lines.each do |l| %> 
+        <% @sales_order.sales_order_lines.each do |l| %>
             <tr>
                 <td><%= l.line_number %> </td>
                 <td><%= link_to l.product.name, product_path(l.product.id) %> </td>
