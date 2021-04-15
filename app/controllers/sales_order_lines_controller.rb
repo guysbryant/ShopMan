@@ -11,7 +11,6 @@ class SalesOrderLinesController < ApplicationController
   def create
     @sales_order_line = @sales_order.sales_order_lines.build(sales_order_line_params)
     if @sales_order_line.save
-      @sales_order.save
       redirect_to sales_order_path(@sales_order)
     else
       @product = @sales_order_line.build_product

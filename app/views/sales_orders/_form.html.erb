@@ -9,7 +9,7 @@
     <%= f.fields_for :sales_order_lines do |sol| %>
         <div class="container">
             <%= hidden_field_tag :sales_order_line_id, sol.object.id %>
-            <div class="line_number" >Line # <%= sol.object.line_number if sol.object.line_number %></div>
+            <div class="line_number" ><%= "Line # #{sol.object.line_number}" if sol.object.line_number %></div>
             <div class="product_create" >
                 <%= sol.fields_for :product do |p| %>
                     <p>
