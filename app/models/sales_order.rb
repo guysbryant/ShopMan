@@ -7,25 +7,26 @@ class SalesOrder < ApplicationRecord
   before_validation :set_sales_order_number, on: :create
   after_save :save_sales_tracker
 
-  SALES_TRACKER ||= SalesNumberTracker.find_or_create_by(id: 1)
-
   def sales_order_lines_attributes=(attributes)
     attributes.values.each do |sol_params|
-        self.sales_order_lines << SalesOrderLine.create(sol_params)
+      if sol = SalesOrderLine.find_by(id: sol_params[:id])
+        sol.update(sol_params)
+      else
+          self.sales_order_lines << SalesOrderLine.create(sol_params)
+      end
     end
   end
 
   def save_sales_tracker
-    SALES_TRACKER.save
+    self.sales_number_tracker.save
   end
 
   def set_sales_order_number
-    set_sales_tracker unless self.sales_number_tracker
-    self.sales_order_number = SALES_TRACKER.next_sales_number
+    self.sales_order_number = set_sales_tracker.next_sales_number
   end
 
   def set_sales_tracker
-    self.sales_number_tracker = SALES_TRACKER
+    self.sales_number_tracker = SalesNumberTracker.find_or_create_by(id: 1)
   end
 
   def next_line_number

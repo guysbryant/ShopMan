@@ -8,7 +8,7 @@ class SalesOrderLine < ApplicationRecord
   end
 
   def product_attributes=(attributes)
-    self.product = Product.find_or_create_by(attributes) unless attributes['name'].empty?
+    self.product = Product.find_or_create_by(attributes) unless attributes.values.any?(&:empty?)
   end
-
 end
+

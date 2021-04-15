@@ -1,8 +1,41 @@
 <%= form_for @sales_order_line do |f| %>
+    <hr>
+    Select An Existing Product <p>
+        (Leave Blank To Create A New Product Below)
+    <p>
     <%= f.label :product_id %>
-    <%= f.collection_select :product_id, Product.all, :id, :name %>
+    <%= f.collection_select :product_id, Product.all, :id, :name, {include_blank: true} %>
     <p>
 
+    <%= f.fields_for :product do |p| %>
+        <hr>
+        <p>Or Create A New Product</p>
+
+        <%= p.label :name %>
+        <% if !!p.object.name %>
+            <%= p.text_field :name, value: "" %>
+        <% else %>
+            <%= p.text_field :name %>
+        <% end %>
+        <p>
+        <%= p.label :description %>
+        <% if !!p.object.name %>
+            <%= p.text_field :description, value: "" %>
+        <% else %>
+            <%= p.text_field :description %>
+        <% end %>
+        <p>
+        <%= p.label :part_number %>
+        <% if !!p.object.name %>
+            <%= p.text_field :part_number, value: "" %>
+        <% else %>
+            <%= p.text_field :part_number %>
+        <% end %>
+        <p>
+        <hr>
+    <% end %>
+    Enter Quantity And Sales Price For This Line
+    <p>
     <%= f.label :qty %>
     <%= f.text_field :qty %>
     <p>
