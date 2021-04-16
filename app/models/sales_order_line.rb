@@ -4,6 +4,10 @@ class SalesOrderLine < ApplicationRecord
   before_create :get_line_number
   after_save :save_sales_order
 
+  validates_associated :product
+  validates_associated :sales_order
+  validates :qty, :price, :line_number, presence: true
+
   def save_sales_order
     self.sales_order.save
   end
