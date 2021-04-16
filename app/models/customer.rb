@@ -7,4 +7,5 @@ class Customer < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :email, uniqueness: { case_sensitive: false }
   validates :phone_number, uniqueness: true
+
 end

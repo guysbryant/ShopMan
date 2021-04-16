@@ -13,7 +13,6 @@ class SalesOrderLinesController < ApplicationController
     if @sales_order_line.save
       redirect_to sales_order_path(@sales_order)
     else
-      @product = @sales_order_line.build_product
       render :new
     end
   end
@@ -26,7 +25,6 @@ class SalesOrderLinesController < ApplicationController
     if @sales_order_line.save
       redirect_to sales_order_path(@sales_order_line.sales_order)
     else
-      @product = @sales_order_line.build_product
       render :edit
     end
   end
@@ -37,6 +35,7 @@ class SalesOrderLinesController < ApplicationController
   end
 
   private
+
   def sales_order_line_params
     params.require(:sales_order_line).permit(:product_id, :sales_order_id, :qty, :price, :line_number, product_attributes: [:name, :description, :part_number])
   end

@@ -46,6 +46,7 @@ class SalesOrdersController < ApplicationController
   end
 
   private
+
   def sales_order_params
     params.require(:sales_order).permit(:customer_id, sales_order_lines_attributes: [:id, :product_id, :qty, :price, product_attributes: [:name, :description, :part_number]])
   end
