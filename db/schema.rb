@@ -30,12 +30,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_214137) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "sales_number_trackers", force: :cascade do |t|
     t.integer "sales_number", default: 1000
     t.datetime "created_at", null: false
@@ -65,22 +59,12 @@ ActiveRecord::Schema.define(version: 2021_04_09_214137) do
     t.index ["sales_number_tracker_id"], name: "index_sales_orders_on_sales_number_tracker_id"
   end
 
-  create_table "user_roles", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["role_id"], name: "index_user_roles_on_role_id"
-    t.index ["user_id"], name: "index_user_roles_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
     t.string "password_digest"
     t.string "address"
     t.integer "phone_number"
-    t.integer "pay_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

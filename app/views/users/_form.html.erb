@@ -1,28 +1,24 @@
 <%= render partial: "layouts/errors", locals: {object: @user} %>
 <%= form_for @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
     <p>
-
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </p>
     <p>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </p>
     <p>
-
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </p>
     <p>
-
-    <%= f.label :phone_number %>
-    <%= f.telephone_field :phone_number %>
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+    </p>
     <p>
-
-    <%= f.label :pay_rate %>
-    <%= f.text_field :pay_rate %>
-    <p>
-
+        <%= f.label :phone_number %>
+        <%= f.telephone_field :phone_number %>
+    </p>
     <%= f.submit %>
 <% end %>

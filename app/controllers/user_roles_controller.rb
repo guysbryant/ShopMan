@@ -1,2 +1,0 @@
-class UserRolesController < ApplicationController
-end

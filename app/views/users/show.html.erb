@@ -1,12 +1,13 @@
 <h1><%= @user.name %>'s page</h1>
-Username: <%= @user.username %>
 <p>
-Address: <%= @user.address %>
+    Username: <%= @user.username %>
+</p>
 <p>
-Phone Number: <%= @user.phone_number %>
+    Address: <%= @user.address %>
+</p>
 <p>
-Pay Rate: <%= @user.pay_rate %>
-<p>
+    Phone Number: <%= @user.phone_number %>
+</p>
 
 <%= link_to "Edit Profile", edit_user_path %>
 <%= link_to "Delete Profile", user_path(@user), method: :delete, data: {confirm: "Are you sure?"} %>
