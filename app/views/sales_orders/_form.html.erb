@@ -1,4 +1,6 @@
+<%= render partial: "layouts/errors", locals: {object: @sales_order} %>
 <%= form_for @sales_order do |f| %>
+    <hr>
     <%= f.label :sales_order_customer %>
     <% if @customer %>
         <%= f.collection_select :customer_id, Customer.all, :id, :name, {selected: @customer.id} %>
@@ -6,8 +8,8 @@
         <%= f.collection_select :customer_id, Customer.all, :id, :name %>
     <% end %>
 
-    <%= f.fields_for :sales_order_lines do |sol| %>
-        <div class="container">
+    <div class="container">
+        <%= f.fields_for :sales_order_lines do |sol| %>
             <%= hidden_field_tag :sales_order_line_id, sol.object.id %>
             <div class="line_number" ><%= "Line # #{sol.object.line_number}" if sol.object.line_number %></div>
             <div class="product_create" >
@@ -17,28 +19,16 @@
                     </p>
                     <p>
                         <%= p.label :name %>
-                        <% if !!p.object.name %>
-                            <%= p.text_field :name, value: "" %>
-                        <% else %>
-                            <%= p.text_field :name %>
-                        <% end %>
+                        <%= p.text_field :name, value: "" %>
                     </p>
                     <p>
                         <%= p.label :description %>
-                        <% if !!p.object.name %>
-                            <%= p.text_field :description, value: "" %>
-                        <% else %>
-                            <%= p.text_field :description %>
-                        <% end %>
+                        <%= p.text_field :description, value: "" %>
                     </p>
                     <p>
                         <%= p.label :part_number %>
-                        <% if !!p.object.name %>
-                            <%= p.text_field :part_number, value: "" %>
-                        <% else %>
-                        <%= p.text_field :part_number %>
+                        <%= p.text_field :part_number, value: "" %>
                     </p>
-                <% end %>
             </div>
             <div class="product_select" >
                 <p>
@@ -52,19 +42,17 @@
             <% end %>
             <div class="clear_fix">
                 <hr>
+                Enter Quantity And Sales Price For This Order
                 <p>
-                    Enter Quantity And Sales Price For This Order
-                </p>
-                <p>
-                <%= sol.label :qty %>
-                <%= sol.text_field :qty %>
+                    <%= sol.label :qty %>
+                    <%= sol.text_field :qty %>
                 </p>
                 <p>
                     <%= sol.label :price %>
                     <%= sol.text_field :price %>
                 </p>
             </div>
-        </div>
-    <% end %>
+        <% end %>
+    </div>
     <%= f.submit %>
 <% end %>

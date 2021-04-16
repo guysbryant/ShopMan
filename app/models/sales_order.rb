@@ -7,7 +7,6 @@ class SalesOrder < ApplicationRecord
   before_validation :set_sales_order_number, on: :create
   after_save :save_sales_tracker
 
-  validates_associated :customer
   validates :sales_order_number, uniqueness: true
 
   def sales_order_lines_attributes=(attributes)

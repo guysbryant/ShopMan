@@ -1,3 +1,4 @@
+<%= render partial: "layouts/errors", locals: {object: @sales_order_line} %>
 <%= form_for @sales_order_line do |f| %>
     <hr>
     <div class="container">
@@ -7,27 +8,15 @@
 
                 <p>
                     <%= p.label :name %>
-                    <% if !!p.object.name %>
-                        <%= p.text_field :name, value: "" %>
-                    <% else %>
-                        <%= p.text_field :name %>
-                    <% end %>
+                    <%= p.text_field :name, value: "" %>
                 </p>
                 <p>
                     <%= p.label :description %>
-                    <% if !!p.object.name %>
-                        <%= p.text_field :description, value: "" %>
-                    <% else %>
-                        <%= p.text_field :description %>
-                    <% end %>
+                    <%= p.text_field :description, value: "" %>
                 </p>
                 <p>
                     <%= p.label :part_number %>
-                    <% if !!p.object.name %>
-                        <%= p.text_field :part_number, value: "" %>
-                    <% else %>
-                        <%= p.text_field :part_number %>
-                    <% end %>
+                    <%= p.text_field :part_number, value: "" %>
                 </p>
             <% end %>
         </div>
@@ -39,19 +28,18 @@
                 <%= f.collection_select :product_id, Product.all, :id, :name, {include_blank: true} %>
             </p>
         </div>
-    <div class="clear_fix">
-        <hr>
-        Enter Quantity And Sales Price For This Line
-        <p>
-            <%= f.label :qty %>
-            <%= f.text_field :qty %>
-        </p>
-        <p>
-            <%= f.label :price %>
-            <%= f.text_field :price %>
-        </p>
-    </div>
-
+        <div class="clear_fix">
+            <hr>
+            Enter Quantity And Sales Price For This Line
+            <p>
+                <%= f.label :qty %>
+                <%= f.text_field :qty %>
+            </p>
+            <p>
+                <%= f.label :price %>
+                <%= f.text_field :price %>
+            </p>
+        </div>
     <%= hidden_field_tag :sales_order_id, params[:sales_order_id] %>
     </div>
     <%= f.submit %>
