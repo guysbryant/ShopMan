@@ -9,3 +9,23 @@ Email <%= @customer.email %><p>
 <%= link_to "Delete Customer", customer_path, method: :delete, data: {confirm: "Are you sure?"} %>
 <p>
 <%= link_to "#{@customer.name} Sales Orders", customer_sales_orders_path(@customer) %>
+
+<hr>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Part Number</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @customer.products.each do |p| %>
+            <tr>
+                <td><%= link_to p.name, product_path(p) %></td>
+                <td><%= p.part_number %></td>
+                <td><%= p.description %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
