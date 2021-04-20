@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/auth/google_oauth2/callback", to: "sessions#omniauth"
+  get "/auth/google_oauth2/callback", to: "sessions#create"
   resources :sales_order_lines
   # resources :sessions
   root to: "sessions#homepage"

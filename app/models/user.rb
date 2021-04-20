@@ -11,4 +11,19 @@ class User < ApplicationRecord
     size == nil || size == 7 || size == 10 || size == 11 ? true : (self.errors.add :phone_number, "is not the correct length")[0]
   end
 
+
+  def self.make_user(request, params)
+    request.env['PATH_INFO'].include?("auth") ? make_by_omniauth(request.env['omniauth.auth']['info']) : make_by_local(params)
+  end
+
+  def self.make_by_omniauth(auth_info)
+    {user: User.find_or_create_by(email: auth_info["email"]) do |u|
+      u.name = auth["name"]
+      u.password = SecureRandom.hex(10)
+      end, method: "omniauth"}
+  end
+
+  def self.make_by_local(params)
+    {user: User.find_by(email: params[:email]), method: "local"}
+  end
 end
