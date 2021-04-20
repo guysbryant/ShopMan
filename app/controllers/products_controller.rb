@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @products = Product.all
+    @products = Product.all.sorted_by_part_number
   end
 
   def new

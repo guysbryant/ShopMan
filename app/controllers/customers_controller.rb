@@ -33,6 +33,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find_by(id: params[:id])
+    @customer_products = @customer.unique_products_sort_by_part_number
   end
 
   def destroy

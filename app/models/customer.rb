@@ -8,4 +8,8 @@ class Customer < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
   validates :phone_number, uniqueness: true
 
+
+  def unique_products_sort_by_part_number
+    self.products.unique_part_numbers_sort
+  end
 end

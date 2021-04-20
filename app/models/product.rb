@@ -5,4 +5,11 @@ class Product < ApplicationRecord
 
   validates :name, :description, :part_number, presence: true
   validates :name, :part_number, uniqueness: { case_sensitive: false }
+
+  scope :sorted_by_part_number, ->{order('products.part_number')}
+  scope :unique_part_number, ->{distinct('products.part_number')}
+
+  def self.unique_part_numbers_sort
+    sorted_by_part_number.unique_part_number
+  end
 end
