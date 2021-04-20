@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  username: MyString
+  email: MyString
   password_digest: MyString
   address: MyString
   phone_number: 
@@ -10,7 +10,7 @@ one:
 
 two:
   name: MyString
-  username: MyString
+  email: MyString
   password_digest: MyString
   address: MyString
   phone_number: 

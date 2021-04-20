@@ -4,7 +4,7 @@
 ** What do I need?
 *** Users
 **** Roles - sales, purchasing, admin, etc
-**** username
+**** email
 **** contact information
 **** pay rate
 *** Customers
