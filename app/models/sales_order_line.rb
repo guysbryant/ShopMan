@@ -1,6 +1,7 @@
 class SalesOrderLine < ApplicationRecord
   belongs_to :product
   belongs_to :sales_order
+
   before_create :get_line_number
   after_save :save_sales_order
 
