@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_logged_in, except: %i(new create)
+  before_action :find_user, only: %i(edit update destroy show)
 
   def index
     @users = User.all
@@ -20,11 +21,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
   end
 
   def update
-    @user = User.find_by(id: params[:id])
     if @user.update(user_params)
       redirect_to @user
     else
@@ -33,19 +32,21 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: params[:id])
     reset_session if @user.id == current_user
       @user.destroy
       redirect_to users_path
   end
 
   def show
-    @user = User.find_by(id: params[:id])
   end
 
   private
 
   def user_params
     params.require(:user).permit(:name, :password, :email, :address, :phone_number)
+  end
+
+  def find_user
+    @user = User.find_by(id: params[:id])
   end
 end
