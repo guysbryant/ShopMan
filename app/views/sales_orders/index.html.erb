@@ -1,4 +1,4 @@
-<h1><%= link_to @customer.name, customer_path(@customer) if @customer %> Sales Orders</h1>
+<h1><%= render partial: "layouts/link_to_customer", locals: {object: @customer} %> Sales Orders</h1>
 <% if @customer %>
     <%= link_to "Create New Sales Order", new_customer_sales_order_path(@customer)  %>
 <% else %>
