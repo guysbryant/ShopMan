@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :require_logged_in
+  before_action :find_customer, only: %i(edit update destroy show)
 
   def index
     @customers = Customer.all
@@ -19,11 +20,9 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find_by(id: params[:id])
   end
 
   def update
-    @customer = Customer.find_by(id: params[:id])
     if @customer.update(customer_params)
       redirect_to @customer
     else
@@ -32,18 +31,21 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = Customer.find_by(id: params[:id])
     @customer_products = @customer.unique_products_sort_by_part_number
   end
 
   def destroy
-    @customer = Customer.find_by(id: params[:id])
     @customer.destroy
     redirect_to customers_path
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(:name, :address, :contact_name, :phone_number, :email)
+  end
+
+  def find_user
+    @customer = Customer.find_by(id: params[:id])
   end
 end
