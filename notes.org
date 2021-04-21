@@ -51,7 +51,7 @@
 ** Research
 *** has_one
 ** Specifications for the Rails Assessment
-*** TODO Specs:[14/15]
+*** TODO Specs:[15/15]
   - [X] Using Ruby on Rails for the project
   - [X] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
   - [X] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
@@ -63,7 +63,7 @@
   - [X] Include signup
   - [X] Include login
   - [X] Include logout
-  - [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+  - [X] Include third party signup/login (how e.g. Devise/OmniAuth)
   - [X] Include nested resource show or index (URL e.g. users/2/recipes) (customers/2/sales_order)
   - [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) (sales_orders/2/sales_order_lines/new)
   - [X] Include form display of validation errors (form URL e.g. /recipes/new)
@@ -76,7 +76,7 @@
 *** Customer products over some price point
 *** Customer products containing inventory of specific material type
 *** Products on specific PurchaseOrder
-** TODO Development Plan [9/11]
+** TODO Development Plan [10/11]
    - [X] relationships
    - [X] migrations
    - [X] crud users
@@ -89,6 +89,6 @@
    - [X] nested routes (require accepts attributes for method)
    - [X] error messages div
    - [X] validations
-   - [ ] omniauth
+   - [X] omniauth
    - [X] scope method(s)
    - [ ] partials / helpers
