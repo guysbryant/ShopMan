@@ -67,16 +67,16 @@
   - [X] Include nested resource show or index (URL e.g. users/2/recipes) (customers/2/sales_order)
   - [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) (sales_orders/2/sales_order_lines/new)
   - [X] Include form display of validation errors (form URL e.g. /recipes/new)
-*** TODO Confirm: [0/4]
- - [ ] The application is pretty DRY
- - [ ] Limited logic in controllers
- - [ ] Views use helper methods if appropriate
- - [ ] Views use partials if appropriate
+*** TODO Confirm: [4/4]
+ - [X] The application is pretty DRY
+ - [X] Limited logic in controllers
+ - [X] Views use helper methods if appropriate
+ - [X] Views use partials if appropriate
 ** Scope Method Ideas
 *** Customer products over some price point
 *** Customer products containing inventory of specific material type
 *** Products on specific PurchaseOrder
-** TODO Development Plan [10/11]
+** TODO Development Plan [11/11]
    - [X] relationships
    - [X] migrations
    - [X] crud users
@@ -91,4 +91,4 @@
    - [X] validations
    - [X] omniauth
    - [X] scope method(s)
-   - [ ] partials / helpers
+   - [X] partials / helpers
