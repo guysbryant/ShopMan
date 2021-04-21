@@ -1,6 +1,6 @@
 class SalesOrderLinesController < ApplicationController
   before_action :require_logged_in
-  before_action :set_sales_order, only: %i(new create destroy)
+  before_action :find_sales_order, only: %i(new create destroy)
   before_action :find_sales_order_line, only: %i(edit update destroy)
 
   def new
@@ -40,7 +40,7 @@ class SalesOrderLinesController < ApplicationController
     params.require(:sales_order_line).permit(:product_id, :sales_order_id, :qty, :price, :line_number, product_attributes: [:name, :description, :part_number])
   end
 
-  def set_sales_order
+  def find_sales_order
     @sales_order = SalesOrder.find_by(id: params[:sales_order_id])
   end
 
