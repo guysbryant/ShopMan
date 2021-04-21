@@ -1,8 +1,4 @@
-<% if session[:login] %>
-    <div class="field_with_errors login_fail">
-        <%= "Could not log you in with that email and password" %>
-    </div>
-<% end %>
+<%= render partial: "login_error" %>
 <%= link_to "Back", '/' %>
 <h1>Login</h1>
 <%= form_tag "/login" do %>
