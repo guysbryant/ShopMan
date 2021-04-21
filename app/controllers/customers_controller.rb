@@ -45,7 +45,7 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(:name, :address, :contact_name, :phone_number, :email)
   end
 
-  def find_user
+  def find_customer
     @customer = Customer.find_by(id: params[:id])
   end
 end
