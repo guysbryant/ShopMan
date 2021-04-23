@@ -5,12 +5,5 @@ My process was to first sit down with a text editor and think through some of th
 After settling on my schema it was time to create the project and generate some resources. I quickly decided that I had poorly named one of my resources and wanted to change it; from purchase order to sales order. It was a small change but one I needed to search documentation to learn how to do...something that would become a regular part of the rest of my process. 
 At this point I didn't need to think too deeply about what I was doing so I turned on some music and went about creating the basic code for my migrations, routes, controllers, models, and views while testing them in browser. Everything was going smoothly...until I began to implement a form that needed to create an object that was associated with another object.
 I knew that this was the time to implement a nested form but I did it the wrong way. If you look at commit: 4e8ca22, you will see my first solutiion to this problem using a form builder that accepts two objects at once. There were a number of challenges with this approach but I got it working. After this, I began working on using a proper neested form with nested attribute writers. In order to really push my understanding I went ahead and implemented a doubled nested form too. Afer adding some logic into my nested attributes writer to handle a couple different cases, I felt confident that I actually knew what was going on.
-I want to take a moment to summarize nested forms here.
-Key Concepts:
-  Form Builder Objects, 
-  has_many.belongs_to.build but belongs_to.build_has_many, 
-  strong params.permit(nested_object_attributes: [])
-  nested_object_attributes=(attributes) writer in the model 
-  The way params look went sent to the nested writer: {"0"=>{"nested_object_attributes_here"=>}}
-In Practice:
-    
+I struggled with this enough to justify its own blog post.
+I expected to struggle with omniauth but it went smoothly
