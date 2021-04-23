@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :current_user
+  helper_method :redirect_if_product_exists
 
   private
 
@@ -14,5 +15,12 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def product_exists(product_params)
+    if !product_params[:name].blank? && Product.find_by(name: product_params[:name]) || !product_params[:part_number].blank? && Product.find_by(part_number: product_params[:part_number])
+      flash[:notice] = "Product Already Exists, Create A New Product Or Select A Product From Drop Down"
+      return true
+    end
   end
 end

@@ -18,7 +18,16 @@ class SalesOrderLine < ApplicationRecord
   end
 
   def product_attributes=(attributes)
-    self.product = Product.find_or_create_by(attributes) unless attributes.values.any?(&:empty?)
+    self.product = Product.find_or_create_by(attributes) unless attributes.values.any?(&:empty?) || Product.find_by_name(attributes[:name]) || Product.find_by_part_number(attributes[:pat_number])
   end
+
+  def self.find_by_name(name)
+    Product.find_by(name: name)
+  end
+
+  def self.find_by_part_number(part_number)
+    Product.find_by(part_number: part_number)
+  end
+
 end
 

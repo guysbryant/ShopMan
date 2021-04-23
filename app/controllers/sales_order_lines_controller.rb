@@ -2,6 +2,7 @@ class SalesOrderLinesController < ApplicationController
   before_action :require_logged_in
   before_action :find_sales_order, only: %i(new create destroy)
   before_action :find_sales_order_line, only: %i(edit update destroy)
+  before_action :check_for_product, only: %i(create update)
 
   def new
     @sales_order_line = @sales_order.sales_order_lines.build
@@ -13,7 +14,8 @@ class SalesOrderLinesController < ApplicationController
     if @sales_order_line.save
       redirect_to sales_order_path(@sales_order)
     else
-      render :new
+      @product = @sales_order_line.build_product
+       render :new
     end
   end
 
@@ -47,4 +49,22 @@ class SalesOrderLinesController < ApplicationController
   def find_sales_order_line
     @sales_order_line = SalesOrderLine.find_by(id: params[:id])
   end
+
+  def product_params
+    params[:sales_order_line][:product_attributes]
+  end
+
+  def check_for_product
+    if product_exists(product_params)
+      request.env["HTTP_REFERER"].include?("edit") ? found_product_from_update : found_product_from_create
+    end
+  end
+
+    def found_product_from_update
+      redirect_to edit_sales_order_line_path(@sales_order_line)
+    end
+
+    def found_product_from_create
+      redirect_to new_sales_order_sales_order_line_path(@sales_order)
+    end
 end

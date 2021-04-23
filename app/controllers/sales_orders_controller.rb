@@ -2,6 +2,7 @@ class SalesOrdersController < ApplicationController
   before_action :require_logged_in
   before_action :set_customer_if_nested, only: %i(index new edit)
   before_action :find_sales_order, only: %i(edit update show destroy)
+  before_action :check_for_product, only: %i(create)
 
   def index
     if @customer
@@ -61,4 +62,11 @@ class SalesOrdersController < ApplicationController
     @sales_order = SalesOrder.find_by(id: params[:id])
   end
 
+  def product_params
+    params["sales_order"]["sales_order_lines_attributes"]["0"]["product_attributes"]
+  end
+
+  def check_for_product
+    redirect_to new_sales_order_path if redirect_if_product_exists(product_params)
+  end
 end
