@@ -67,6 +67,6 @@ class SalesOrdersController < ApplicationController
   end
 
   def check_for_product
-    redirect_to new_sales_order_path if redirect_if_product_exists(product_params)
+    redirect_to new_sales_order_path if product_exists(product_params)
   end
 end
