@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   def self.make_by_omniauth(auth_info)
     {user: User.find_or_create_by(email: auth_info["email"]) do |u|
-      u.name = auth["name"]
+      u.name = auth_info["name"]
       u.password = SecureRandom.hex(10)
       end, method: "omniauth"}
   end
