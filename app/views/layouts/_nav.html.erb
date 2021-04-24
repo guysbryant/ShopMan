@@ -4,7 +4,7 @@
       <%= link_to "Customers", customers_path %>
       <%= link_to "Sales Orders", sales_orders_path %>
       <%= link_to "My Profile", user_path(current_user) %>
-    <% else %>
+    <% elsif request.path != "/" %>
         <%= link_to "Home", '/' %>
     <% end %>
 
